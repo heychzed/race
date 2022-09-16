@@ -81,4 +81,42 @@ macro.do_repeat = function(amount, func, iterator, starting)
     end
 end
 
+macro.while = function(condition, func, delay, iterate)
+    --[[
+        A generic while with optional parameters.
+
+        'condition' describes the codition needed for the loop to run, acting the same as 
+        "while condition do" in base lua.
+
+        'function' describes the code to run for each loop. 'i' is passed in as a parameter if 'iterate'
+        is set to true.
+
+        'delay' is an optional parameter representing a delay in seconds for each execution of the loop.
+        When unset, delay takes the default value of 0.
+
+        'iterate' is an optional parameter representing if macro should iterate a value 'i' on each
+        execution of the loop, and pass it to the function.
+
+    ]]
+
+
+    delay = delay or 0
+    iterate = iterate or false
+
+    local i = 1
+
+    while condition do
+        task.wait(delay)
+
+        success, result = pcall(func, i)
+
+        if not success then
+            error("[ macro.lua ] Error caught on while loop. Error thrown: " .. result)
+            if race.strict then break end
+        end          
+
+        if iterate then i += 1 end
+    end
+end
+
 return macro
