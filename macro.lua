@@ -35,7 +35,7 @@ macro.do_for = function(table, func, whichisa)
 
     local tbl = {}
 
-    if type(table) == "Instance" then tbl = tbl:GetDescendants() else tbl = table end
+    if type(table) == "Instance" then tbl = table:GetDescendants() else tbl = table end
 
     whichisa = wichisa or false
 
@@ -46,6 +46,7 @@ macro.do_for = function(table, func, whichisa)
 
         if not success then
             error("[ macro.lua ] Error caught on index " .. i .. ". Error thrown: " .. result)
+            if race.strict then break end
         end
     end
 end
@@ -75,10 +76,9 @@ macro.do_repeat = function(amount, func, iterator, starting)
 
         if not success then
             error("[ macro.lua ] Error caught on index " .. i .. ". Error thrown: " .. result)
+            if race.strict then break end
         end        
     end
 end
-
-
 
 return macro
