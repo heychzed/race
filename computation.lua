@@ -8,3 +8,8 @@ changelog:
 - added computation.lua
 
 ]]
+
+local computation = {}
+
+
+return computation
