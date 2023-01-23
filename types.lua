@@ -34,7 +34,8 @@ types.empty = function()
     end
 
     return_tbl.main = function()
-        print("[ types.lua ] Function empty_function's main method ran.")
+        if not race.dev_mode then return end
+        print("[ types.lua ] Main method successfuly ran.")
     end
 
 

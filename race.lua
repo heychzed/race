@@ -13,6 +13,7 @@ local race = {}
 
 -- race.strict determines if code execution is halted on an error
 race.strict = false
+race.dev_mode = true
 
 race.about = function(name, desc){
     local return_tbl = {}
