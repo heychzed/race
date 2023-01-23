@@ -15,13 +15,13 @@ local race = {}
 race.strict = false
 race.dev_mode = true
 
-race.about = function(name, desc){
+race.about = function(name, desc)
     local return_tbl = {}
     return_tbl.name = name
     return_tbl.desc = desc
 
     return return_tbl
-}
+end
 
 
 return race
