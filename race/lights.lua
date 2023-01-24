@@ -5,6 +5,6 @@ lights.lua: lights & lighting for roblox
 
 
 changelog:
-- added lights.macro
+- added race.lights
 
 ]]

@@ -1,11 +1,11 @@
 --[[
-race v1.0
+race v1.3
 
 race.lua: main file, contains references and global race functions
 
 
 changelog:
-- added race.macro
+- added configs for strict & devmode
 
 ]]
 
