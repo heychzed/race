@@ -1,11 +1,11 @@
 --[[
-types v1.0
+types v1.1
 
 types.lua: custom types & shorthands for race
 
 
 changelog:
-- added race.types
+-  added lighting_preset
 
 ]]
 
@@ -58,8 +58,6 @@ types.lighting_preset = function()
     default.Ambient = Color3.new(200, 200, 200)    
     default.OutdoorAmbient = Color3.new(200, 200, 200)
     default.ExposureCompensation = 0.25 
-    
-
 
     return_tbl.main = function()
         local lighting = game.Lighting
@@ -67,11 +65,27 @@ types.lighting_preset = function()
         default.Brightness = lighting.Brightness
         default.Ambient = lighting.Ambient
         default.OutdoorAmbient = lighting.OutdoorAmbient
-        default.ExposureCompensation = lighting.ExposureCompensation
-            
+        default.ExposureCompensation = lighting.ExposureCompensation  
     end
 
+    return_tbl.get_default = function()
+        local return_tbl = {}
 
+        return_tbl.Brightness = default.Brightness
+        return_tbl.Ambient = default.Ambient
+        return_tbl.OutdoorAmbient = default.OutdoorAmbient
+        return_tbl.ExposureCompensation = default.ExposureCompensation
+    end
+
+    return_tbl.get_current = function()
+        local return_tbl = {}
+        local lighting = game.Lighting
+
+        return_tbl.Brightness = lighting.Brightness
+        return_tbl.Ambient = lighting.Ambient
+        return_tbl.OutdoorAmbient = lighting.OutdoorAmbient
+        return_tbl.ExposureCompensation = lighting.ExposureCompensation
+    end
 
     return_tbl.to_string = function()
         return table.concat(return_tbl.default)
